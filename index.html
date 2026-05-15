@@ -1,49 +1,53 @@
-<style>
-  * {
-    margin: 0px;
-    touch-action: manipulation;
-  }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ball Game</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="hud" aria-live="polite">
+      <div class="hud__item">
+        <span>Score</span>
+        <strong id="scoreEl">0</strong>
+      </div>
+      <div class="hud__item">
+        <span>Best</span>
+        <strong id="bestScoreEl">0</strong>
+      </div>
+      <div class="hud__item">
+        <span>Stage</span>
+        <strong id="stageEl">1</strong>
+      </div>
+    </div>
 
-  canvas {
-    width: 100%;
-    height: 100%;
-  }
+    <div class="toolbar">
+      <button id="pauseButton" class="toolbar__button" type="button">Pause</button>
+      <button id="restartButton" class="toolbar__button" type="button">Restart</button>
+    </div>
 
-  div {
-    position: fixed;
-    color: white;
-    margin: 2%;
-    font-size: 120%;
+    <canvas aria-label="Ball shooting game"></canvas>
 
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
-  }
+    <div id="overlay" class="overlay">
+      <div class="overlay__panel">
+        <p id="overlayEyebrow" class="overlay__eyebrow">Best <span id="modalBestScoreEl">0</span></p>
+        <h1 id="overlayTitle">Ball Game</h1>
+        <p id="overlayScore" class="overlay__score">Score 0</p>
+        <div id="overlayInstructions" class="overlay__instructions">
+          <p>Click or tap anywhere to shoot from the center. Stop every enemy before it reaches you.</p>
+          <div class="stage-list" aria-label="Stage score goals">
+            <span>Stage 1: 0</span>
+            <span>Stage 2: 100</span>
+            <span>Stage 3: 250</span>
+            <span>Stage 4: 450</span>
+            <span>Stage 5: 700</span>
+          </div>
+        </div>
+        <button id="primaryButton" class="overlay__button" type="button">Start</button>
+      </div>
+    </div>
 
-  #modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: grid;
-    place-items: center;
-    background-color: white;
-    color: black;
-  }
-  #score {
-    color: black;
-  }
-</style>
-<div id="top-corner"><span>Score:</span><span id="scoreEl">0</span></div>
-
-<canvas></canvas>
-<!-- <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
-  integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
-  crossorigin="anonymous"
-></script> -->
-<script src="./index.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
