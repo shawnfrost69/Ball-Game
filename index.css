@@ -1,3 +1,213 @@
 * {
-  margin: 0px;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #05070d;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f8fafc;
+  touch-action: manipulation;
+}
+
+canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  cursor: crosshair;
+}
+
+button {
+  font: inherit;
+}
+
+.hud,
+.toolbar {
+  position: fixed;
+  z-index: 5;
+  display: flex;
+  gap: 8px;
+  user-select: none;
+}
+
+.hud {
+  top: 14px;
+  left: 14px;
+  flex-wrap: wrap;
+}
+
+.hud__item {
+  min-width: 78px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(7, 12, 22, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.hud__item span {
+  display: block;
+  color: #94a3b8;
+  font-size: 11px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.hud__item strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.toolbar {
+  top: 14px;
+  right: 14px;
+}
+
+.toolbar__button,
+.overlay__button {
+  border: 0;
+  border-radius: 8px;
+  color: #04111f;
+  background: #38bdf8;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.toolbar__button {
+  min-width: 84px;
+  min-height: 38px;
+  padding: 8px 12px;
+}
+
+.toolbar__button:nth-child(2) {
+  background: #fbbf24;
+}
+
+.toolbar__button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(3, 7, 18, 0.74);
+  backdrop-filter: blur(8px);
+  opacity: 1;
+  visibility: visible;
+}
+
+.overlay.is-hidden {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.overlay__panel {
+  width: min(92vw, 430px);
+  padding: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.94);
+  text-align: center;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+}
+
+.overlay__eyebrow {
+  margin: 0 0 10px;
+  color: #7dd3fc;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.overlay h1 {
+  margin: 0;
+  font-size: clamp(34px, 9vw, 54px);
+  line-height: 0.95;
+}
+
+.overlay__score {
+  margin: 14px 0 22px;
+  color: #cbd5e1;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.overlay__instructions {
+  display: none;
+  margin: -4px 0 22px;
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.overlay__instructions.is-visible {
+  display: block;
+}
+
+.overlay__instructions p {
+  margin: 0 0 14px;
+}
+
+.stage-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.stage-list span {
+  min-height: 44px;
+  padding: 8px 6px;
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  border-radius: 8px;
+  background: rgba(8, 47, 73, 0.46);
+  color: #e0f2fe;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.overlay__button {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 16px;
+  font-size: 17px;
+}
+
+@media (max-width: 620px) {
+  .hud {
+    right: 14px;
+  }
+
+  .hud__item {
+    flex: 1 1 30%;
+    min-width: 0;
+  }
+
+  .toolbar {
+    top: auto;
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+  }
+
+  .toolbar__button {
+    flex: 1;
+  }
+
+  .stage-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
